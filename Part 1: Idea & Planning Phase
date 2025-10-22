@@ -1,0 +1,33 @@
+Project Idea: Smart Task Manager – A simple web-based task management system where users can create, organize, and track their tasks. The app allows users to assign categories, set deadlines, and update statuses (pending, in-progress, completed). This project focuses on building a functional backend API using Django REST Framework, with clean modular apps and a well-structured database.
+
+Main Features: User Authentication, Task Managment (CRUD), Catagories/Labels, and Task Status & Deadlines
+
+APIs to Use No external API required for core functionality.
+
+Django Apps & Endpoints
+Users App: Handles authentication & profiles.
+Task App: Handles task creation and management.
+
+Database Schema
+User
+id (PK)
+username (string, unique)
+email (string, unique)
+password (hashed)
+
+Category
+id (PK)
+name (string)
+
+Task
+id (PK)
+user_id (FK → User)
+title (string)
+description (text)
+due_date (date)
+status (enum: pending, in-progress, completed)
+category_id (FK → Category)
+
+Relationships:
+One User → Many Tasks.
+One Category → Many Tasks.
