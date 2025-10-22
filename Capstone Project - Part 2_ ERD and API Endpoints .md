@@ -1,4 +1,4 @@
-### **![][image1]**
+### ![Alt text](https://github.com/Sly-ai/ALX-Capstone-Project/blob/main/Images/ERD%20for%20Smart%20Task%20Management%20APP.png)
 
 ### 
 
