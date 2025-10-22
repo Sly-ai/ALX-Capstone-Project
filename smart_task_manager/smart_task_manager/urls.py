@@ -15,8 +15,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
+from .views import welcome_view, api_root_view
+
+schema_view = get_schema_view(
+    openapi.Info(title="Task Manager API", default_version='v1'),
+    public=True,
+)
 
 urlpatterns = [
+    path('', welcome_view, name='welcome'), # Welcome endpoint
+    path('api/', api_root_view, name='api-root'),  # Add API root
     path('admin/', admin.site.urls),
+    path('api/users/', include('users.urls')), # User endpoints
+    path('api/', include('tasks.urls')), # Task endpoints
+    path('api/categories/', include('categories.urls')), # Category endpoints
+    path('api/token/', TokenObtainPairView.as_view(),name='token_obtain_pair'), # JWT token obtain
+    path('api/token/refresh/', TokenRefreshView.as_view(),name='token_refresh'), # JWT token refresh
+    #path('api-auth/', include('rest_framework.urls')),  # For browsable API    
+    path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
