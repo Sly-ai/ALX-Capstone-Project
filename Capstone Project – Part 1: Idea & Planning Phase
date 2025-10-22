@@ -6,7 +6,22 @@ APIs to Use No external API required for core functionality.
 
 Django Apps & Endpoints
 Users App: Handles authentication & profiles.
+
+POST /api/users/register/ → Register a new user.
+POST /api/users/login/ → Login & get token.
+POST /api/users/logout/ → Logout.
+
 Task App: Handles task creation and management.
+
+GET /api/tasks/ → List user’s tasks.
+POST /api/tasks/ → Create new task.
+GET /api/tasks/<id>/ → Retrieve task details.
+PUT /api/tasks/<id>/ → Update task.
+DELETE /api/tasks/<id>/ → Delete task.
+GET /api/tasks/categories/ → List all categories.
+
+Analytics App
+GET /api/analytics/summary/ → Provides task completion statistics
 
 Database Schema
 User
